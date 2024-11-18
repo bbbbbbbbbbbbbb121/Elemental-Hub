@@ -363,18 +363,23 @@ function PNG.new(buffer)
         bitmap[row] = {}
 
         if filterType == 0 then
+            print("filterType 0")
             -- None
             Unfilter:None(scanline, bitmap, bpp, row)
         elseif filterType == 1 then
+            print("filterType 1")
             -- Sub
             Unfilter:Sub(scanline, bitmap, bpp, row)
         elseif filterType == 2 then
+            print("filterType 2")
             -- Up
             Unfilter:Up(scanline, bitmap, bpp, row)
         elseif filterType == 3 then
+            print("filterType 3")
             -- Average
             Unfilter:Average(scanline, bitmap, bpp, row)
         elseif filterType == 4 then
+            print("filterType 4")
             -- Paeth
             Unfilter:Paeth(scanline, bitmap, bpp, row)
         end
@@ -383,4 +388,10 @@ function PNG.new(buffer)
     return setmetatable(file, PNG)
 end
 
-return PNG
+print(
+    PNG.new(
+        game:HttpGet(
+            "https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.3/assets/minecraft/textures/block/barrel_side.png"
+        )
+    )
+)
